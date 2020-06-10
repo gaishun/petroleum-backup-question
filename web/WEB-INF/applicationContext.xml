@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:mvc="http://www.springframework.org/schema/c"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <!--扫描所有加了Spring注解的类，加载斤context-->
+    <!--<context:component-scan base-package="com.bysj"/>-->
+    <!--<mvc:DAO-servlet-hanlder />-->
+    <!--<mvc:annotation-driven />-->
+    <!-- 页面跳转实现-->
+    <!--<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"-->
+          <!--id="internalResourceViewResolver">-->
+        <!--<property name="prefix" value="/WEB-INF/jsp/"/>-->
+        <!--<property name="suffix" value=".jsp"/>-->
+    <!--</bean>-->
+
+
+    <!-- 配置javaBean实体类 -->
+    <bean id="Simple" class="com.bysj.Entity.Simple">          <!--属性自动配置 -->  </bean>
+    <bean id="Select" class="com.bysj.Entity.Select">          <!--属性自动配置 -->  </bean>
+    <bean id="Judge" class="com.bysj.Entity.Judge">          <!--属性自动配置 -->  </bean>
+    <bean id="Question" class="com.bysj.Entity.Question">  <!--属性自动配置 -->  </bean>
+
+    <!--<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">-->
+        <!--&lt;!&ndash;加载驱动类&ndash;&gt;-->
+        <!--<property name="driverClassName" value="com.mysql.jdbc.Driver"/>-->
+        <!--&lt;!&ndash;数据库访问地址&ndash;&gt;-->
+        <!--<property name="url"-->
+                  <!--value=" jdbc:mysql://39.106.169.97:3506/lastDesign?useSSL=false&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;autoReconnect=true"/>-->
+        <!--&lt;!&ndash;数据库访问用户名&ndash;&gt;-->
+        <!--<property name="username" value="guests"/>-->
+        <!--&lt;!&ndash;数据库访问密码&ndash;&gt;-->
+        <!--<property name="password" value="Guest302711.."/>-->
+    <!--</bean>-->
+    <!-- spring 提供的数据库事务管理 -->
+    <!--<bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">-->
+        <!--<property name="dataSource" ref="dataSource"/>-->
+    <!--</bean>-->
+    <!--<tx:annotation-driven transaction-manager="txManager"/>-->
+    <!--spring提供的数据库访问操作类 -->
+    <!--<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">-->
+        <!--<property name="dataSource" ref="dataSource"/>-->
+    <!--</bean>-->
+    <!--&lt;!&ndash; dao层类 &ndash;&gt;-->
+    <!--<bean id="Simdao" class="com.bysj.DAO.SimpleImp">-->
+        <!--<property name="jdbcTemplate" ref="jdbcTemplate"/>-->
+    <!--</bean>-->
+    <!--<bean id="Seldao" class="com.bysj.DAO.SelectImp">-->
+        <!--<property name="jdbcTemplate" ref="jdbcTemplate"/>-->
+    <!--</bean>-->
+    <!--<bean id="Juddao" class="com.bysj.DAO.JudgeImp">-->
+        <!--<property name="jdbcTemplate" ref="jdbcTemplate"/>-->
+    <!--</bean>-->
+    <!--<bean id="Othdao" class="com.bysj.DAO.JudgeImp">-->
+        <!--<property name="jdbcTemplate" ref="jdbcTemplate"/>-->
+    <!--</bean>-->
+
+
+
+
+
+
+</beans>

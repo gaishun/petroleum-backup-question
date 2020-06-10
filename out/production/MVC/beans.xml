@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/c"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       https://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+
+
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <!--加载驱动类-->
+        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+        <!--数据库访问地址-->
+        <property name="url"
+                  value=" jdbc:mysql://39.106.169.97:3506/lastDesign?useSSL=false&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;autoReconnect=true"/>
+        <!--数据库访问用户名-->
+        <property name="username" value="guests"/>
+        <!--数据库访问密码-->
+        <property name="password" value="Guest302711.."/>
+    </bean>
+    <!-- spring 提供的数据库事务管理 -->
+    <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <tx:annotation-driven transaction-manager="txManager"/>
+
+
+
+    <!-- 配置javaBean实体类 -->
+    <bean id="Simple" class="com.bysj.Entity.Simple">          <!--属性自动配置 -->  </bean>
+    <bean id="Select" class="com.bysj.Entity.Select">          <!--属性自动配置 -->  </bean>
+    <bean id="Judge" class="com.bysj.Entity.Judge">          <!--属性自动配置 -->  </bean>
+    <bean id="Question" class="com.bysj.Entity.Question">  <!--属性自动配置 -->  </bean>
+
+    <!--spring提供的数据库访问操作类 -->
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <!-- dao层类 -->
+    <bean id="Simdao" class="com.bysj.DAO.SimpleImp">
+        <property name="jdbcTemplate" ref="jdbcTemplate"/>
+    </bean>
+    <bean id="Seldao" class="com.bysj.DAO.SelectImp">
+        <property name="jdbcTemplate" ref="jdbcTemplate"/>
+    </bean>
+    <bean id="Juddao" class="com.bysj.DAO.JudgeImp">
+        <property name="jdbcTemplate" ref="jdbcTemplate"/>
+    </bean>
+    <bean id="Other" class="com.bysj.DAO.Other_DAO">
+        <property name="jdbcTemplate" ref="jdbcTemplate"/>
+    </bean>
+</beans>
